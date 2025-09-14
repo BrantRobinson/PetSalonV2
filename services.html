@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+
+    <!-- bootstrap style sheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="./img/logo.ico">
+
+    <!-- Google Fnts Style Sheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Londrina+Outline&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="logo-container">
+                <a href="#"><img src="./img/logo.png" class="logo" alt="dog and cat"></a>
+                <div class="brand-name">
+                    <span>Petty Paws</span>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./registration.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Services Page</h1>
+        <form id="servicesRegistrationForm" class="container m-5 p-4 border bg-light rounded-3">
+            <div class="mb-3">
+                <label for="service" class="form-label">Service</label>
+                <input placeholder="Service Name" type="text" class="form-control" id="service" required autofocus>
+            </div>
+            <div class="mb-3">
+                <label for="Description" class="form-label">Description</label>
+                <input placeholder="Service Description" type="text" class="form-control" id="serviceDescription" required>
+            </div>
+            <div class="mb-3">
+                <label for="Description" class="form-label">Price</label>
+                <input placeholder="Service Price" type="number" class="form-control" id="servicePrice" step=".01" required>
+            </div>
+        
+            <div class="services-form-buttons d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary" id="registerButton">Register Service</button>
+                <button id="clearButton" class="btn btn-secondary">Clear</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <p>&copy;2025 Petty Paws, Inc.</p>
+        <div class="social-media-links">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook"></i>
+        </div>
+    </footer>
+    
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="./scripts/services.js"></script>
+
+</body>
+</html>
