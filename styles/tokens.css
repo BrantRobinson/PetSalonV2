@@ -1,0 +1,23 @@
+:root {
+    --fc-pri:purple;
+    --fc-sec: black; 
+
+    --bg-color-pri: rgb(255, 236, 239);
+    --bg-color-sec: rgb(178, 140, 178);
+    --bg-color-ter: rgb(219, 182, 219);
+    --bg-color-quad: rgb(0, 0, 58);
+
+    --nav-fc: 
+}
+
+
+.dark-mode {
+  --bg-color-pri: #654d65;
+  --bg-color-sec: rgb(96, 54, 96);
+  --bg-color-ter:rgb(77, 30, 77);
+
+  --fc-pri: rgb(178, 140, 178);
+  --fc-sec: rgb(225, 225, 225);
+
+ 
+}

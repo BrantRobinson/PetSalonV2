@@ -1,17 +1,19 @@
 //crate the Service Class 
 class Service {
-    constructor(name, description, price) {
+    constructor(name, description, price, image) {
         this.name = name;
         this.description = description;
         this.price = Math.round(price*100);
+        this.image = image;
     }
 }
 
 //initialize the services array
-let services = [];
-
-
-
+let services = [
+    new Service ("Pet Shampoo", "Our Pet Shampoo service gently cleans and conditions your pet’s coat, leaving it soft, shiny, and refreshed. Using pet-safe products, we wash away dirt and odors while giving your companion a soothing massage that promotes relaxation and healthy skin.", 25.99, "./img/services-img1.png"),
+    new Service ("Nail Trim", "Our Nail Trim keeps your pet’s paws comfortable and healthy. We carefully trim each nail to a safe length, smoothing rough edges to prevent snagging, reduce discomfort, and support natural posture and movement.", 15.99, "./img/services-img2.png"),
+    new Service ("Mist Treatment", "The Mist Treatment hydrates and revitalizes your pet’s skin and coat with a fine, nourishing spray. Infused with natural botanicals, it soothes dryness and leaves your pet relaxed, refreshed, and radiant.", 15.99, "./img/services-img3.png")
+];
 
 //check the form input field as the cursor leaves it or as the user types
 $("#servicesRegistrationForm input").on("blur input", function () {
@@ -42,6 +44,8 @@ $("#servicesRegistrationForm").on("submit", function(event){
         console.log("All Services:", services);
 
         $("#servicesRegistrationForm")[0].reset();
+
+        renderServices();
     } else {
         // console.log("form has an error");
     }
@@ -79,3 +83,28 @@ function validateForm () {
 
     return valid;
 }
+
+
+
+//function to display services on the services page
+function renderServices() {
+    const container = $(".services-cards-container");
+    container.empty(); 
+
+    services.forEach(service => {
+        const card = $(`
+            <div class="services-card">
+                <img class="service-img" src="${service.image || './img/default-service.jpg'}" alt="${service.name}">
+                <div class="services-detail-card">
+                    <h3 class="service-title">${service.name}</h3>
+                    <p class="service-price">$${parseFloat(service.price/100).toFixed(2)}</p>
+                    <p class="service-description">${service.description}</p>
+                    <a href="#" class="services-details-button">Book Now</a>
+                </div>
+            </div>
+        `);
+        container.append(card);
+    });
+}
+
+renderServices ();

@@ -1,34 +1,5 @@
-//create array of pets
-// let pets = [
-//     {
-//         name: "Fido",
-//         bday: "2020-09-13",
-//         gender: "male",
-//         service: "bath",
-//         type: "dog",
-//         timeIn: "14:30:08"
-//     },
-//     {
-//         name: "Daisy",
-//         bday: "2022-01-22",
-//         gender: "female",
-//         service: "nails clipped",
-//         type: "cat",
-//         timeIn: "14:32:22"
-//     },
-//     {
-//         name: "Tweetie",
-//         bday: "2024-09-05",
-//         gender: "male",
-//         service: "wings clipped",
-//         type: "bird",
-//         timeIn: "14:12:32"
-//     }
-// ];
 
-
-
-//create pets object constructor instead of using the array method above
+//create pets object constructor 
 class Pet {
   constructor(name, bday, gender, service, type, timeIn) {
     this.name = name;

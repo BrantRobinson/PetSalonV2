@@ -8,6 +8,7 @@
     <!-- bootstrap style sheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="./styles/tokens.css">
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="icon" type="image/x-icon" href="./img/logo.ico">
 
@@ -19,6 +20,7 @@
 
 </head>
 <body>
+    <a id="mode-btn" type="button">Switch to Dark Mode</a>
     <nav class="navbar navbar-expand-sm bg-body-tertiary">
         <div class="container-fluid">
             <div class="logo-container">
@@ -45,28 +47,81 @@
             </div>
         </div>
     </nav>
-    <div class="container">
-        <h1>Services Page</h1>
-        <form id="servicesRegistrationForm" class="container m-5 p-4 border bg-light rounded-3">
-            <div class="mb-3">
-                <label for="service" class="form-label">Service</label>
-                <input placeholder="Service Name" type="text" class="form-control" id="service" required autofocus>
+
+    <section class="treatments">
+        <div id="treatments-top2" class="treatments-top">
+            <h1>SPA SERVICES</h1>
+            <p>A place for great treaments for your best friend!</p>
+
+        </div>
+        <div id="treatments-bottom" class="treatments-bottom">
+            <div class="services-cards-container">
+                <div class="services-card">
+                    <img class="service-img" src="./img/services-img1.png" alt="">
+                    <div class="services-detail-card">
+                        <h3 class="service-title">Pet Shampoo</h3>
+                        <p class="service-price">$24.99</p>
+                        <p class="service-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore velit, explicabo quos facere molestiae, earum temporibus voluptates molestias recusandae eum??</p>
+                        <a href="" class="services-details-button">Book Now</a>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <img class="service-img" src="./img/services-img2.png" alt="">
+                    <div class="services-detail-card">
+                        <h3 class="service-title">Nail Trim</h3>
+                        <p class="service-price">$14.99</p>
+                        <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo in impedit recusandae quibusdam magni qui vero earum amet, libero, quis porro vel perferendis. Unde illo odit consequatur! Vel, quo harum.</p>
+                        <a href="" class="services-details-button">Book Now</a>
+                    </div>
+                </div>
+                <div class="services-card">
+                    <img class="service-img" src="./img/services-img3.png" alt="">
+                    <div class="services-detail-card">
+                        <h3 class="service-title">Mist Treatment</h3>
+                        <p class="service-price">$43.99</p>
+                        <p class="service-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident magni, doloribus, tempora laudantium cum dolore, ipsum tempore quisquam dolores eaque excepturi cupiditate rerum commodi at nobis eum aperiam. Sequi, dolorum?</p>
+                        <a href="" class="services-details-button">Book Now</a>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="Description" class="form-label">Description</label>
-                <input placeholder="Service Description" type="text" class="form-control" id="serviceDescription" required>
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="reg-form-section">
+        <form id="servicesRegistrationForm" class="reg-form container p-4 border rounded-3" enctype="multipart/form-data">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="service" placeholder="" maxlength="12" required>
+                <label for="service" class="form-label">Service Title</label>
             </div>
-            <div class="mb-3">
-                <label for="Description" class="form-label">Price</label>
-                <input placeholder="Service Price" type="number" class="form-control" id="servicePrice" step=".01" required>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="serviceDescription" placeholder="" maxlength="250">
+                <label for="serviceDescription" class="form-label">Description</label>
             </div>
-        
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="servicePrice" step=".01" placeholder="" required>
+                <label for="servicePrice" class="form-label">Price</label>
+            </div>
+
             <div class="services-form-buttons d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary" id="registerButton">Register Service</button>
-                <button id="clearButton" class="btn btn-secondary">Clear</button>
+                <button type="submit" class="btn btn-primary" id="registerButton">Add Service</button>
+                <button type="button" id="clearButton" class="btn btn-secondary">Clear</button>
             </div>
         </form>
-    </div>
+    </section>
+
+
+
+
+
+
+
     <footer>
         <p>&copy;2025 Petty Paws, Inc.</p>
         <div class="social-media-links">
@@ -77,6 +132,7 @@
     
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="./scripts/scripts.js"></script>
     <script src="./scripts/services.js"></script>
 
 </body>
