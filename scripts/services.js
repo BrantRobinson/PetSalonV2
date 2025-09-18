@@ -10,9 +10,9 @@ class Service {
 
 //initialize the services array
 let services = [
-    new Service ("Pet Shampoo", "Our Pet Shampoo service gently cleans and conditions your pet’s coat, leaving it soft, shiny, and refreshed. Using pet-safe products, we wash away dirt and odors while giving your companion a soothing massage that promotes relaxation and healthy skin.", 25.99, "./img/services-img1.png"),
+    new Service ("Pet Shampoo", "Our Pet Shampoo service gently cleans and conditions your pet's coat, leaving it soft, shiny, and refreshed. Using pet-safe products, we wash away dirt and odors while giving your companion a soothing massage that promotes relaxation and healthy skin.", 25.99, "./img/services-img1.png"),
     new Service ("Nail Trim", "Our Nail Trim keeps your pet’s paws comfortable and healthy. We carefully trim each nail to a safe length, smoothing rough edges to prevent snagging, reduce discomfort, and support natural posture and movement.", 15.99, "./img/services-img2.png"),
-    new Service ("Mist Treatment", "The Mist Treatment hydrates and revitalizes your pet’s skin and coat with a fine, nourishing spray. Infused with natural botanicals, it soothes dryness and leaves your pet relaxed, refreshed, and radiant.", 15.99, "./img/services-img3.png")
+    new Service ("Mist Treatment", "The Mist Treatment hydrates and revitalizes your pet's skin and coat with a fine, nourishing spray. Infused with natural botanicals, it soothes dryness and leaves your pet relaxed, refreshed, and radiant.", 15.99, "./img/services-img3.png")
 ];
 
 //check the form input field as the cursor leaves it or as the user types
@@ -40,6 +40,9 @@ $("#servicesRegistrationForm").on("submit", function(event){
         const newService = new Service(serviceName, serviceDescription, servicePrice);
         //push the Service object to the services array
         services.push(newService);
+
+        saveServices();
+        
         console.log("New Service:", newService);
         console.log("All Services:", services);
 
@@ -107,4 +110,25 @@ function renderServices() {
     });
 }
 
+//function to save services array to loacl storage
+function saveServices() {
+    localStorage.setItem("services", JSON.stringify(services));
+}
+
+
+//function to get services from local storage
+function loadServices() {
+    const stored = localStorage.getItem("services");
+    if (stored) {
+        const parsed = JSON.parse(stored);
+        services = parsed.map(s => new Service(s.name, s.description, s.price/100, s.image));
+    }
+}
+
+//load the services from local storage when the page loads
+loadServices();
+
+//display the services on the services page
 renderServices ();
+
+ 

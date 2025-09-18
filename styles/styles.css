@@ -373,6 +373,44 @@ a:hover {
   font-size: .8rem;
 }
 
+.registered-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.metrics-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 0  auto;
+    padding: 1rem 0;
+}
+
+.metric-container {
+    height: 100px;
+    width: 300px;
+    background-color: var(--bg-color-pri);
+    /* box-shadow: 5px 5px 30px var(--bg-color-sec); */
+    border: 3px solid var(--bg-color-sec);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* padding: 2rem; */
+    align-items: center;
+    justify-content: center;
+    /* gap: 1rem; */
+}
+
+.metric {
+  font-size: 1.3rem;
+
+}
+
+
+
 @media (max-width: 1000px) {
   .why-us-block-group {
     grid-template-columns: 1fr 1fr;
