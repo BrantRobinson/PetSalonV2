@@ -1,4 +1,4 @@
-//crate the Service Class 
+//create the Service Class 
 class Service {
     constructor(name, description, price, image) {
         this.name = name;
@@ -11,7 +11,7 @@ class Service {
 //initialize the services array
 let services = [
     new Service ("Pet Shampoo", "Our Pet Shampoo service gently cleans and conditions your pet's coat, leaving it soft, shiny, and refreshed. Using pet-safe products, we wash away dirt and odors while giving your companion a soothing massage that promotes relaxation and healthy skin.", 25.99, "./img/services-img1.png"),
-    new Service ("Nail Trim", "Our Nail Trim keeps your pet’s paws comfortable and healthy. We carefully trim each nail to a safe length, smoothing rough edges to prevent snagging, reduce discomfort, and support natural posture and movement.", 15.99, "./img/services-img2.png"),
+    new Service ("Nail Trim", "Our Nail Trim keeps your pet's paws comfortable and healthy. We carefully trim each nail to a safe length, smoothing rough edges to prevent snagging, reduce discomfort, and support natural posture and movement.", 15.99, "./img/services-img2.png"),
     new Service ("Mist Treatment", "The Mist Treatment hydrates and revitalizes your pet's skin and coat with a fine, nourishing spray. Infused with natural botanicals, it soothes dryness and leaves your pet relaxed, refreshed, and radiant.", 15.99, "./img/services-img3.png")
 ];
 
@@ -116,19 +116,15 @@ function saveServices() {
 }
 
 
-//function to get services from local storage
-function loadServices() {
-    const stored = localStorage.getItem("services");
-    if (stored) {
-        const parsed = JSON.parse(stored);
-        services = parsed.map(s => new Service(s.name, s.description, s.price/100, s.image));
-    }
-}
 
+
+//save the 3 prepopulated service to local storage on page load
+saveServices();
 //load the services from local storage when the page loads
 loadServices();
 
 //display the services on the services page
 renderServices ();
+
 
  

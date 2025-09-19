@@ -122,7 +122,7 @@ a:hover {
 }
 
 .main-details p {
-    font-size: .7rem;
+    font-size: 1rem;
     font-weight: 400;
     text-align: justify;
 }
@@ -409,6 +409,22 @@ a:hover {
 
 }
 
+.no-display {
+    display: table-cell;
+}
+
+.registration-form {
+    grid-area: register;
+    width: 80%;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.border {
+    padding: 1rem;
+    background-color: var(--bg-color-ter) !important;
+}
+
 
 
 @media (max-width: 1000px) {
@@ -429,4 +445,8 @@ a:hover {
   .about-us-row {
     margin: 0 20px;
   }
+
+  .no-display {
+    display: none;
+    }
 }
