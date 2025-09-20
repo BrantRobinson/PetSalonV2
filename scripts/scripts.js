@@ -547,6 +547,7 @@ function renderAppointments() {
       <tr>
         <td>${app.petName}</td>
         <td>${app.petType}</td>
+        <td>${app.petService}</td>
         <td>${dateStr}</td>
         <td>${timeStr}</td>
       </tr>
