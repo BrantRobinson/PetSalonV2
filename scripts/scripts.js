@@ -528,17 +528,14 @@ function renderAppointments() {
   const tbody = $("#appointmentsTable tbody");
   tbody.empty();
 
-  // sort by date then time
+  // sort appointments by date then time
   appointments.sort((a, b) => {
     const dateA = new Date(`${a.appointmentDate}T${a.appointmentTime}`);
     const dateB = new Date(`${b.appointmentDate}T${b.appointmentTime}`);
     return dateA - dateB;
   });
 
-  appointments.forEach(app => {
-    const pet = pets.find(p => p.name === app.petName);
-
-
+  appointments.forEach((app, index) => {
     const dateObj = new Date(`${app.appointmentDate}T${app.appointmentTime}`);
     const dateStr = dateObj.toLocaleDateString();
     const timeStr = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -546,14 +543,28 @@ function renderAppointments() {
     tbody.append(`
       <tr>
         <td>${app.petName}</td>
-        <td>${app.petType}</td>
+        <td class="no-display">${app.petType}</td>
         <td>${app.petService}</td>
         <td>${dateStr}</td>
         <td>${timeStr}</td>
+        <td>
+          <a onclick="deleteAppointment(${index})">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </td>
       </tr>
     `);
   });
 }
+
+
+// function to delete appointments
+function deleteAppointment(index) {
+  appointments.splice(index, 1);   
+  saveAppointments();              
+  renderAppointments();            
+}
+
 
 
 $(document).ready(renderAppointments);
