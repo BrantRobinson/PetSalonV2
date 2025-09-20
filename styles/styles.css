@@ -11,12 +11,27 @@ body {
   overflow-x: hidden;
 }
 
+html, body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-color-sec);
   padding: 1em 1em;
+  margin-top: auto;
+}
+
+.services-footer {
+  background-color: var(--bg-color-pri);
 }
 
 a:hover {
@@ -31,7 +46,7 @@ a:hover {
   border-radius: 100px;
   color: var(--fc-sec);
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   z-index: 2;
   padding: 0 .5rem;
@@ -63,6 +78,17 @@ a:hover {
   z-index: -1; 
   object-position: center 25%;
   opacity: 80%;
+}
+
+.add-service-btn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-title {
+  padding: 2rem;
+  text-align: center;
 }
 
 .content {
@@ -147,6 +173,11 @@ a:hover {
   text-align: center;
   text-decoration: none;
   color: var(--fc-pri);
+}
+
+.book-button {
+  grid-column: 1/4;
+  align-self: center;
 }
 
 .services-details-button {
@@ -283,6 +314,7 @@ a:hover {
 .treatments {
   display: grid;
   grid-template-rows: 300px auto;
+  min-height: 100%;
 }
 
 .treatments-top {
@@ -307,6 +339,7 @@ a:hover {
 
 .treatments-bottom {
   background-color: var(--bg-color-sec);
+  flex: 1;
 }
 
 .reg-form-section {
@@ -392,7 +425,7 @@ a:hover {
 .metric-container {
     height: 100px;
     width: 300px;
-    background-color: var(--bg-color-pri);
+    background-color: var(--bg-color-ter);
     /* box-shadow: 5px 5px 30px var(--bg-color-sec); */
     border: 3px solid var(--bg-color-sec);
     border-radius: 10px;
@@ -413,6 +446,10 @@ a:hover {
     display: table-cell;
 }
 
+.modal-button {
+  padding: 1rem 0;
+}
+
 .registration-form {
     grid-area: register;
     width: 80%;
@@ -425,7 +462,25 @@ a:hover {
     background-color: var(--bg-color-ter) !important;
 }
 
+.pets-table {
+  max-width: 700px;
+}
 
+.main-register-section {
+  background-color: var(--bg-color-pri);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.main-appointments-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background-color: var(--bg-color-pri);
+  min-height: 100%;
+}
 
 @media (max-width: 1000px) {
   .why-us-block-group {

@@ -20,160 +20,204 @@
 
 </head>
 <body>
+<main>
 
-    <!-- Registration Modal -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Appointment Modal -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content p-4">
-                <div class="registration-form">
-                    <form class="border bg-light rounded" id="registrationForm" onsubmit="register(event)">
-                        <div class="mb-3">
-                            <label class="form-label" for="petName">Pet Name</label>
-                            <input class="form-control" type="text" name="petName" required id="petName">
-                        </div>
+            <form id="appointmentForm" class="border bg-light rounded" onsubmit="registerAppointment(event)">
+                <h5 class="mb-3">Book an Appointment</h5>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="bDay">Birthday</label>
-                            <input class="form-control" type="date" name="bDay" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="gender">Sex</label>
-                            <select class="form-control" name="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="type">Type</label>
-                            <select class="form-control" name="type">
-                                <option value="cat">Cat</option>
-                                <option value="dog">Dog</option>
-                                <option value="bird">Bird</option>
-                                <option value="lizard">Lizard</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="service">Service</label>
-                            <select id="serviceDropdown" class="form-control" name="service">
-                              
-                            </select>
-                        </div>
-
-                        <button class="btn btn-primary" type="submit" id="petRegisterButton">Register</button>
-                    </form>
+                <!-- Pet Dropdown -->
+                <div class="mb-3">
+                <label for="appointmentPet" class="form-label">Pet Name</label>
+                <select class="form-control" id="appointmentPet" required></select>
                 </div>
+
+                <!-- Service Dropdown -->
+                <div class="mb-3">
+                <label for="appointmentService" class="form-label">Service</label>
+                <select class="form-control" id="appointmentService" required></select>
+                </div>
+
+                <!-- Date/Time -->
+                <div class="mb-3">
+                <label for="appointmentDateTime" class="form-label">Date & Time</label>
+                <input type="datetime-local" class="form-control" id="appointmentDateTime" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Appointment</button>
+            </form>
             </div>
         </div>
     </div>
-    <!-- dark mode button -->
-    <a id="mode-btn" type="button">Switch to Dark Mode</a>
-
-    <nav class="navbar navbar-expand-sm bg-body-tertiary">
-        <div class="container-fluid">
-            <div class="logo-container">
-                <a href="#"><img src="./img/logo.png" class="logo" alt="dog and cat"></a>
-                <div class="brand-name">
-                    <span>Petty Paws</span>
-                </div>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./registration.html">Appointments</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <section class="treatments">
-        <div id="treatments-top2" class="treatments-top">
-            <h1>SPA SERVICES</h1>
-            <p>A place for great treaments for your best friend!</p>
-
-        </div>
-        <div id="treatments-bottom" class="treatments-bottom">
-            <div class="services-cards-container">
-                <div class="services-card">
-                    <img class="service-img" src="./img/services-img1.png" alt="">
-                    <div class="services-detail-card">
-                        <h3 class="service-title">Pet Shampoo</h3>
-                        <p class="service-price">$24.99</p>
-                        <p class="service-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio inventore velit, explicabo quos facere molestiae, earum temporibus voluptates molestias recusandae eum??</p>
-                        <a href="" class="services-details-button">Book Now</a>
-                    </div>
-                </div>
-                <div class="services-card">
-                    <img class="service-img" src="./img/services-img2.png" alt="">
-                    <div class="services-detail-card">
-                        <h3 class="service-title">Nail Trim</h3>
-                        <p class="service-price">$14.99</p>
-                        <p class="service-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo in impedit recusandae quibusdam magni qui vero earum amet, libero, quis porro vel perferendis. Unde illo odit consequatur! Vel, quo harum.</p>
-                        <a href="" class="services-details-button">Book Now</a>
-                    </div>
-                </div>
-                <div class="services-card">
-                    <img class="service-img" src="./img/services-img3.png" alt="">
-                    <div class="services-detail-card">
-                        <h3 class="service-title">Mist Treatment</h3>
-                        <p class="service-price">$43.99</p>
-                        <p class="service-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident magni, doloribus, tempora laudantium cum dolore, ipsum tempore quisquam dolores eaque excepturi cupiditate rerum commodi at nobis eum aperiam. Sequi, dolorum?</p>
-                        <a href="" class="services-details-button">Book Now</a>
+    
+        <!-- Registration Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content p-4">
+                    <div class="registration-form">
+                        <form class="border bg-light rounded" id="registrationForm" onsubmit="register(event)">
+                            <div class="mb-3">
+                                <label class="form-label" for="petName">Pet Name</label>
+                                <input class="form-control" type="text" name="petName" required id="petName">
+                            </div>
+    
+                            <div class="mb-3">
+                                <label class="form-label" for="bDay">Birthday</label>
+                                <input class="form-control" type="date" name="bDay" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label class="form-label" for="gender">Sex</label>
+                                <select class="form-control" name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label class="form-label" for="type">Type</label>
+                                <select class="form-control" name="type">
+                                    <option value="cat">Cat</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="lizard">Lizard</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label class="form-label" for="service">Service</label>
+                                <select id="serviceDropdown" class="form-control" name="service">
+    
+                                </select>
+                            </div>
+    
+                            <button class="btn btn-primary" type="submit" id="petRegisterButton">Register</button>
+                        </form>
                     </div>
                 </div>
             </div>
-
         </div>
-
-    </section>
-
-
-
-
-    <section class="reg-form-section">
-        <form id="servicesRegistrationForm" class="reg-form container p-4 border rounded-3" enctype="multipart/form-data">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="service" placeholder="" maxlength="12" required>
-                <label for="service" class="form-label">Service Title</label>
+        <!-- dark mode button -->
+        <a id="mode-btn" type="button">Switch to Dark Mode</a>
+    
+        <nav class="navbar navbar-expand-sm bg-body-tertiary">
+            <div class="container-fluid">
+                <div class="logo-container">
+                    <a href="#"><img src="./img/logo.png" class="logo" alt="dog and cat"></a>
+                    <div class="brand-name">
+                        <span>Petty Paws</span>
+                    </div>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./registration.html">Registered Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./appointments.html">Appointments</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="serviceDescription" placeholder="" maxlength="250">
-                <label for="serviceDescription" class="form-label">Description</label>
+        </nav>
+    
+        <section class="treatments">
+            <div id="treatments-top2" class="treatments-top">
+                <h1>SPA SERVICES</h1>
+                <p>A place for great treaments for your best friend!</p>
+    
             </div>
-
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="servicePrice" step=".01" placeholder="" required>
-                <label for="servicePrice" class="form-label">Price</label>
+            <div id="treatments-bottom" class="treatments-bottom">
+                <div class="services-cards-container">
+            
+                </div>
+    
+            <!-- services modal button -->
+            <div class="d-flex justify-content-end pe-4">
+                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                Add a Service
+                </a>
             </div>
-
-            <div class="services-form-buttons d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary" id="registerButton">Add Service</button>
-                <button type="button" id="clearButton" class="btn btn-secondary">Clear</button>
+    
             </div>
-        </form>
-    </section>
+    
+    
+        </section>
+    
+    
+    
+    
+        <!-- <section class="reg-form-section">
+            <form id="servicesRegistrationForm" class="reg-form container p-4 border rounded-3" enctype="multipart/form-data">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="service" placeholder="" maxlength="12" required>
+                    <label for="service" class="form-label">Service Title</label>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="serviceDescription" placeholder="" maxlength="250">
+                    <label for="serviceDescription" class="form-label">Description</label>
+                </div>
+    
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="servicePrice" step=".01" placeholder="" required>
+                    <label for="servicePrice" class="form-label">Price</label>
+                </div>
+    
+                <div class="services-form-buttons d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary" id="registerButton">Add Service</button>
+                    <button type="button" id="clearButton" class="btn btn-secondary">Clear</button>
+                </div>
+            </form>
+        </section> -->
+    
+        <!-- Service Registration Modal -->
+        <div class="modal fade" id="serviceModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content p-4">
+                <form id="servicesRegistrationForm" class="border bg-light rounded" enctype="multipart/form-data">
+                    <h5 class="mb-3">Add New Service</h5>
+    
+                    <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="service" placeholder="Service Title" maxlength="12" required>
+                    <label for="service">Service Title</label>
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="serviceDescription" placeholder="Description" maxlength="250">
+                    <label for="serviceDescription">Description</label>
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="servicePrice" step=".01" placeholder="Price" required>
+                    <label for="servicePrice">Price</label>
+                    </div>
+    
+                    <div class="services-form-buttons d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary" id="registerButton">Add Service</button>
+                    <button type="button" id="clearButton" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    
+</main>
 
-
-
-
-
-
-
-    <footer>
+    <footer class="services-footer">
         <p>&copy;2025 Petty Paws, Inc.</p>
         <div class="social-media-links">
             <i class="fa-brands fa-instagram"></i>
@@ -188,7 +232,7 @@
 
     <!-- jquery scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    
+
     <script src="./scripts/scripts.js"></script>
     
     

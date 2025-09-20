@@ -141,6 +141,11 @@ $("#servicesRegistrationForm").on("submit", function(event){
         $("#servicesRegistrationForm")[0].reset();
 
         renderServices();
+
+        //auto-close the modal
+        const modalEl = document.getElementById("serviceModal");
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
     } else {
         // console.log("form has an error");
     }
@@ -195,7 +200,7 @@ function renderServices() {
                     <h3 class="service-title">${service.name}</h3>
                     <p class="service-price">$${parseFloat(service.price/100).toFixed(2)}</p>
                     <p class="service-description">${service.description}</p>
-                    <a data-bs-toggle="modal" data-service="${service.name}" data-bs-target="#registerModal"href="#" class="services-details-button">Book Now</a>
+                    <a data-bs-toggle="modal" data-service="${service.name}" data-bs-target="#appointmentModal"href="#" class="services-details-button">Book Now</a>
                 </div>
             </div>
         `);
@@ -226,13 +231,11 @@ renderServices ();
 
 //create pets object constructor 
 class Pet {
-  constructor(name, bday, gender, service, type, timeIn) {
+  constructor(name, bday, gender, type) {
     this.name = name;
     this.bday = bday;
     this.gender = gender;
-    this.service = service;
     this.type = type;
-    this.timeIn = timeIn;
   }
 }
 
@@ -242,9 +245,9 @@ loadPets();
 
 if (pets.length === 0) {
     pets = [
-        new Pet("Fido", "2020-09-13", "male", "bath", "dog", "2:30 PM"),
-        new Pet("Daisy", "2022-01-22", "female", "nails clipped", "cat", "2:32 PM"),
-        new Pet("Tweetie", "2024-09-05", "male", "wings clipped", "bird", "2:48 PM")
+        new Pet("Fido", "2020-09-13", "male", "dog"),
+        new Pet("Daisy", "2022-01-22", "female", "cat"),
+        new Pet("Tweetie", "2024-09-05", "male", "bird")
     ];
     savePets();
 }
@@ -274,16 +277,15 @@ function register(event) {
     const bDay = registerForm.elements["bDay"].value;
     const gender = registerForm.elements["gender"].value;
     const type = registerForm.elements["type"].value;
-    const service = registerForm.elements["service"].value;
 
     console.log(petName);
     console.log(bDay);
     console.log(gender);
     console.log(type);
-    console.log(service);
 
-    const now = new Date();
-    const newPet = new Pet(petName, bDay, gender, service, type, now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
+    
+    
+    const newPet = new Pet(petName, bDay, gender, type);
     pets.push(newPet);
     savePets();
 
@@ -293,7 +295,7 @@ function register(event) {
     populateRegTable ();
 
     const modalEl = document.getElementById("registerModal");
-    const modal = bootstrap.Modal.getInstance(modalEl); // get active modal
+    const modal = bootstrap.Modal.getInstance(modalEl); 
     modal.hide();
 
     registerForm.reset();
@@ -370,12 +372,187 @@ function populateRegTable () {
             regTableContents.innerHTML += `
             <tr>
                 <td>${pets[i].name}</td>
-                <td class="no-display">${pets[i].type}</td>
-                <td class="no-display">${pets[i].age}</td>
-                <td>${pets[i].service}</td>
-                <td>${pets[i].timeIn}</td>
+                <td>${pets[i].type}</td>
+                <td>${pets[i].age}</td>
                 <td><button class="btn" onClick="deletePet(${i})"><i class="fa-solid fa-trash"></i></button>
             </tr>`
         }
     }
 }
+
+
+
+//create the appontment class
+class Appointment {
+  constructor(petName, petType, petService, appointmentDate, appointmentTime) {
+    this.petName = petName;
+    this.petType = petType;
+    this.petService = petService;
+    this.appointmentDate = appointmentDate;
+    this.appointmentTime = appointmentTime;
+  }
+}
+
+let appointments = [];
+
+// Load existing appointments or create a few default appointments if non exist
+loadAppointments();
+
+if (appointments.length === 0) {
+  appointments = [
+    new Appointment("Fido", "dog", "Nail Clipping", "2025-10-12", "13:30"),
+    new Appointment("Lucy", "cat", "Shampoo", "2025-10-12", "12:00")
+  ];
+  saveAppointments();
+}
+
+// Save appointments to localStorage
+function saveAppointments() {
+  localStorage.setItem("appointments", JSON.stringify(appointments));
+}
+
+// Load appointments from localStorage
+function loadAppointments() {
+  const storedAppointments = localStorage.getItem("appointments");
+  if (storedAppointments) {
+    appointments = JSON.parse(storedAppointments);
+  }
+}
+
+
+// When appointments modal opens, populate dropdowns
+$('#appointmentModal').on('show.bs.modal', function (event) {
+  populatePetDropdown();
+  populateServiceDropdownForAppointments();
+
+  const button = $(event.relatedTarget);
+  const selectedService = button.data('service');
+
+  // Preselect service if available
+  if (selectedService) {
+    $('#appointmentService').val(selectedService);
+  }
+});
+
+// function to populate pets dropdown from pets array
+function populatePetDropdown() {
+  const petDropdown = $("#appointmentPet");
+  petDropdown.empty();
+
+  if (pets.length > 0) {
+    pets.forEach(pet => {
+      petDropdown.append(`<option value="${pet.name}">${pet.name}</option>`);
+    });
+  } else {
+    petDropdown.append(`<option disabled>No pets registered</option>`);
+  }
+}
+
+// Populate service dropdown from services array
+function populateServiceDropdownForAppointments() {
+  const serviceDropdown = $("#appointmentService");
+  serviceDropdown.empty();
+
+  if (services.length > 0) {
+    services.forEach(service => {
+      serviceDropdown.append(`<option value="${service.name}">${service.name}</option>`);
+    });
+  } else {
+    serviceDropdown.append(`<option disabled>No services available</option>`);
+  }
+}
+
+
+// register a new appointment into an array and local storage
+function registerAppointment(event) {
+  event.preventDefault();
+
+  const petName = $("#appointmentPet").val();
+  const service = $("#appointmentService").val();
+  const dateTime = $("#appointmentDateTime").val();
+
+  // Find the selected pet in pets array to also get what type of pet it is to display in the table of appointments.  It would be better if i do this with a primary key, but I don't have time to adjust all that before this is due :).  This will cause problems if there are 2 pets with the same name
+  const pet = pets.find(p => p.name === petName);
+
+  if (!pet) {
+    alert("Pet not found!");
+    return;
+  }
+
+  // Split datetime into date + time since i will display those separately in the table
+  const [appointmentDate, appointmentTime] = dateTime.split("T");
+
+  const newAppointment = new Appointment(
+    pet.name,
+    pet.type,
+    service,
+    appointmentDate,
+    appointmentTime
+  );
+
+  appointments.push(newAppointment);
+  saveAppointments();
+
+  renderAppointments();
+
+  console.log("Appointments:", appointments);
+
+  // Close modal
+  const modalEl = document.getElementById("appointmentModal");
+  const modal = bootstrap.Modal.getInstance(modalEl);
+  modal.hide();
+
+  $("#appointmentForm")[0].reset();
+}
+
+
+// Load pets & appointments from localStorage
+pets = JSON.parse(localStorage.getItem("pets")) || [];
+appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+
+// calculate age from pet bday
+function calculateAge(bday) {
+  if (!bday) return "—";
+  const birthDate = new Date(bday);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
+// display appointments in the appointments table
+function renderAppointments() {
+  const tbody = $("#appointmentsTable tbody");
+  tbody.empty();
+
+  // sort by date then time
+  appointments.sort((a, b) => {
+    const dateA = new Date(`${a.appointmentDate}T${a.appointmentTime}`);
+    const dateB = new Date(`${b.appointmentDate}T${b.appointmentTime}`);
+    return dateA - dateB;
+  });
+
+  appointments.forEach(app => {
+    const pet = pets.find(p => p.name === app.petName);
+
+
+    const dateObj = new Date(`${app.appointmentDate}T${app.appointmentTime}`);
+    const dateStr = dateObj.toLocaleDateString();
+    const timeStr = dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    tbody.append(`
+      <tr>
+        <td>${app.petName}</td>
+        <td>${app.petType}</td>
+        <td>${dateStr}</td>
+        <td>${timeStr}</td>
+      </tr>
+    `);
+  });
+}
+
+
+$(document).ready(renderAppointments);

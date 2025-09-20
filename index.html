@@ -20,6 +20,8 @@
 
 </head>
 <body>
+
+
     <a id="mode-btn" type="button">Switch to Dark Mode</a>
     <div class="video-background">
         <nav class="navbar navbar-home navbar-expand-sm bg-body-tertiary">
@@ -42,7 +44,10 @@
                             <a class="nav-link" href="./services.html">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./registration.html">Appointments</a>
+                            <a class="nav-link" href="./registration.html">Registered Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./appointments.html">Appointments</a>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +66,7 @@
                     <a href="#why-us" class="main-details-button">Learn More</a>
             
                     <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" class="main-details-button">
-                        Register Now
+                        Register Your Pet
                     </a>
                 </div>
             
@@ -69,7 +74,7 @@
         </div>
     </div>
     <section class="why-us" id="why-us">
-        <h2 class="section-headers ">Why Choose Us?</h2>
+        <h2 class="section-headers">Why Choose Us?</h2>
         <div class="why-us-block-group">
             <div class="why-us-block">
                 <img class="why-us-img" src="./img/why-us1.png" alt="food bowls">
@@ -101,8 +106,10 @@
                 <p class="why-us-heading">Relaxation & Wellness</p>
                 <p class="why-us-text">Soothing treatments and a calm atmosphere help your pet feel refreshed and stress-free.</p>
             </div>
+            <!-- <a href="#" class="main-details-button book-button" data-bs-toggle="modal" data-bs-target="#appointmentModal" id="appointmeModalButton">Book an Appointment</a> -->
+            <a href="#" data-bs-toggle="modal"  data-bs-target="#registerModal"  class="main-details-button book-button"> Register Your Pet
+            </a>
         </div>
-
     </section>
     <section class="about-us" id="about-us">
         <h2 class="section-headers">What Our Pets Say</h2>
@@ -182,12 +189,12 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label class="form-label" for="service">Service</label>
                             <select id="serviceDropdown" class="form-control" name="service">
                               
                             </select>
-                        </div>
+                        </div> -->
 
                         <button class="btn btn-primary" type="submit" id="petRegisterButton">Register</button>
                     </form>
@@ -196,6 +203,36 @@
         </div>
     </div>
 
+    <!-- Appointment Modal -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content p-4">
+            <form id="appointmentForm" class="border bg-light rounded" onsubmit="registerAppointment(event)">
+                <h5 class="mb-3">Book an Appointment</h5>
+
+                <!-- Pet Dropdown -->
+                <div class="mb-3">
+                <label for="appointmentPet" class="form-label">Pet Name</label>
+                <select class="form-control" id="appointmentPet" required></select>
+                </div>
+
+                <!-- Service Dropdown -->
+                <div class="mb-3">
+                <label for="appointmentService" class="form-label">Service</label>
+                <select class="form-control" id="appointmentService" required></select>
+                </div>
+
+                <!-- Date/Time -->
+                <div class="mb-3">
+                <label for="appointmentDateTime" class="form-label">Date & Time</label>
+                <input type="datetime-local" class="form-control" id="appointmentDateTime" step="900" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Appointment</button>
+            </form>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy;2025 Petty Paws, Inc.</p>

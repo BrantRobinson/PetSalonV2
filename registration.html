@@ -20,8 +20,6 @@
 </head>
 <body>
 
-    <!-- button to open registration modal -->
-    <button type="button" class="btn btn-primary register-button" data-bs-toggle="modal" data-bs-target="#registerModal" id="registerModalButton">Register New Pet</button>
     <!-- Registration Modal -->
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -57,14 +55,14 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label class="form-label" for="service">Service</label>
                             <select class="form-control" name="service" id="serviceDropdown">
                               
-                            </select>
+                            </select> -->
                         </div>
 
-                        <button class="btn btn-primary" type="submit" id="petRegisterButton">Register</button>
+                        <button class="btn btn-primary m-4" type="submit" id="petRegisterButton">Register</button>
                     </form>
                 </div>
             </div>
@@ -94,39 +92,46 @@
                         <a class="nav-link" aria-current="page" href="./services.html">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./registration.html">Appointments</a>
+                        <a class="nav-link active" href="./registration.html">Registered Pets</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="./appointments.html">Appointments</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <section class="registered-list">
-        <div class="metrics-container">
-            <div class="total-registered-container metric-container">
-                <h2>Registered Pets</h2>
-                <div id="js-total-pets" class="metric"></div>
+    <div class="main-register-section">
+        <h1 class="page-title">Registered Pets</h1>
+        <section class="registered-list">
+            <div class="metrics-container">
+                <div class="total-registered-container metric-container">
+                    <h2>Registered Pets</h2>
+                    <div id="js-total-pets" class="metric"></div>
+                </div>
+                <div class="wait-time-container metric-container">
+                    <h2>Average Age</h2>
+                    <div id="js-average-age" class="metric"></div>
+                </div>
             </div>
-            <div class="wait-time-container metric-container">
-                <h2>Average Age</h2>
-                <div id="js-average-age" class="metric"></div>
+            <table class="container table table-striped shadow-sm m-4 border pets-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Age</th>
+                        <th class="action-heading">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="js-registration-table">
+                </tbody>
+            </table>
+            <!-- button to open registration modal -->
+            <div class="modal-button">
+                <button type="button" class="btn btn-primary register-button" data-bs-toggle="modal" data-bs-target="#registerModal" id="registerModalButton">Register New Pet</button>
             </div>
-        </div>
-        <table class="container table table-striped shadow-sm m-4 border">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th class="no-display">Type</th>
-                    <th class="no-display">Age</th>
-                    <th>Service</th>
-                    <th>Time In</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="js-registration-table">
-            </tbody>
-        </table>
-    </section>
+        </section>
+    </div>
 
     <footer>
         <p>&copy;2025 Petty Paws, Inc.</p>
